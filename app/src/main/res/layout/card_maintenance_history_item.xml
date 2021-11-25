@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="8dp"
+    android:elevation="0dp"
+    android:clipToPadding="false"
+    app:cardElevation="22dp">
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="8dp">
+
+        <TextView
+            android:id="@+id/item_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Oil + Filter Change"
+            android:textStyle="bold"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"/>
+
+        <ImageView
+            android:id="@+id/item_receipt_thumbnail"
+            android:layout_width="0dp"
+            android:layout_height="80dp"
+            app:layout_constraintWidth_percent="0.2"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:src="@drawable/porscheserviceinvoice_zps198b086a"
+            android:scaleType="centerCrop"/>
+
+        <GridLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/item_receipt_thumbnail"
+            android:rowCount="2"
+            android:columnCount="3"
+            android:useDefaultMargins="true">
+
+            <TextView
+                android:id="@+id/item_timestamp_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/MaintenanceHistoryMonospaceStyle"
+                android:text="Odometer (mi)"
+                android:layout_columnWeight="1" />
+
+            <TextView
+                android:id="@+id/item_date_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/MaintenanceHistoryMonospaceStyle"
+                android:text="Date"
+                android:layout_columnWeight="1"/>
+
+            <TextView
+                android:id="@+id/item_total_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/MaintenanceHistoryMonospaceStyle"
+                android:text="Total"
+                android:layout_columnWeight="1"/>
+
+            <TextView
+                android:id="@+id/item_timestamp_value"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/MaintenanceHistoryMonospaceStyle"
+                android:text="100,000"
+                android:layout_columnWeight="1"/>
+
+            <TextView
+                android:id="@+id/item_date_value"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/MaintenanceHistoryMonospaceStyle"
+                android:text="1/1/2021"
+                android:layout_columnWeight="1"/>
+
+            <TextView
+                android:id="@+id/item_total_value"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/MaintenanceHistoryMonospaceStyle"
+                android:text="$ 0.00"
+                android:layout_columnWeight="1"/>
+
+        </GridLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</com.google.android.material.card.MaterialCardView>

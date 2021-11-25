@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/Users/masonberres/AndroidStudioProjects/maintanance_buddy/app/src/main/res/drawable/rectangle_rounded_1corner_white.xml" value="0.2526041666666667" />
+        <entry key="..\:/Users/masonberres/AndroidStudioProjects/maintanance_buddy/app/src/main/res/drawable/rectangle_rounded_white.xml" value="0.4432291666666667" />
+        <entry key="..\:/Users/masonberres/AndroidStudioProjects/maintanance_buddy/app/src/main/res/layout/activity_main.xml" value="0.33489583333333334" />
+        <entry key="..\:/Users/masonberres/AndroidStudioProjects/maintanance_buddy/app/src/main/res/layout/add_vehicle_fragment.xml" value="0.23645833333333333" />
+        <entry key="..\:/Users/masonberres/AndroidStudioProjects/maintanance_buddy/app/src/main/res/layout/card_maintenance_history_item.xml" value="0.4270833333333333" />
+        <entry key="..\:/Users/masonberres/AndroidStudioProjects/maintanance_buddy/app/src/main/res/layout/card_vehicle.xml" value="0.25" />
+        <entry key="..\:/Users/masonberres/AndroidStudioProjects/maintanance_buddy/app/src/main/res/layout/fragment_add_maintenance_record.xml" value="0.25" />
+        <entry key="..\:/Users/masonberres/AndroidStudioProjects/maintanance_buddy/app/src/main/res/layout/fragment_dashboard.xml" value="0.4270833333333333" />
+        <entry key="..\:/Users/masonberres/AndroidStudioProjects/maintanance_buddy/app/src/main/res/layout/fragment_garage.xml" value="0.23645833333333333" />
+        <entry key="..\:/Users/masonberres/AndroidStudioProjects/maintanance_buddy/app/src/main/res/layout/fragment_home.xml" value="0.4270833333333333" />
+        <entry key="..\:/Users/masonberres/AndroidStudioProjects/maintanance_buddy/app/src/main/res/layout/fragment_login.xml" value="0.23645833333333333" />
+        <entry key="..\:/Users/masonberres/AndroidStudioProjects/maintanance_buddy/app/src/main/res/layout/fragment_maintenance_calendar.xml" value="0.22291666666666668" />
+        <entry key="..\:/Users/masonberres/AndroidStudioProjects/maintanance_buddy/app/src/main/res/layout/fragment_maintenance_history.xml" value="0.3340857787810384" />
+        <entry key="..\:/Users/masonberres/AndroidStudioProjects/maintanance_buddy/app/src/main/res/layout/fragment_maintenance_summary.xml" value="0.4270833333333333" />
+        <entry key="..\:/Users/masonberres/AndroidStudioProjects/maintanance_buddy/app/src/main/res/layout/fragment_signup.xml" value="0.209375" />
+        <entry key="..\:/Users/masonberres/AndroidStudioProjects/maintanance_buddy/app/src/main/res/layout/fragment_vehicle.xml" value="0.4270833333333333" />
+        <entry key="..\:/Users/masonberres/AndroidStudioProjects/maintanance_buddy/app/src/main/res/layout/vehicle_card.xml" value="0.23645833333333333" />
+        <entry key="..\:/Users/masonberres/AndroidStudioProjects/maintanance_buddy/app/src/main/res/menu/bottom_nav_menu.xml" value="0.21041666666666667" />
+        <entry key="..\:/Users/thoug/AndroidStudioProjects/main/app/src/main/res/layout/add_vehicle_fragment.xml" value="0.2898550724637681" />
+        <entry key="..\:/Users/thoug/AndroidStudioProjects/main/app/src/main/res/layout/fragment_home.xml" value="0.19739583333333333" />
+        <entry key="..\:/Users/thoug/StudioProjects/main/app/src/main/res/layout/add_event_fragment.xml" value="0.2" />
+        <entry key="..\:/Users/thoug/StudioProjects/main/app/src/main/res/layout/add_vehicle_fragment.xml" value="0.20416666666666666" />
+        <entry key="app/src/main/res/layout/activity_main.xml" value="0.11574074074074074" />
+        <entry key="app/src/main/res/layout/add_vehicle_fragment.xml" value="0.23963165283203128" />
+        <entry key="app/src/main/res/layout/fragment_Garage Card.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/fragment_dashboard.xml" value="0.13764044943820225" />
+        <entry key="app/src/main/res/layout/fragment_garage.xml" value="0.5911458333333334" />
+        <entry key="app/src/main/res/layout/fragment_home.xml" value="0.1381340579710145" />
+        <entry key="app/src/main/res/layout/fragment_new_vehicle.xml" value="0.3333333333333333" />
+        <entry key="app/src/main/res/layout/fragment_notifications.xml" value="0.15885416666666666" />
+        <entry key="app/src/main/res/layout/fragment_signup.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/fragment_vehicle.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/vehicle_card.xml" value="0.1" />
+      </map>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="11" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/out" />
+  </component>
+</project>

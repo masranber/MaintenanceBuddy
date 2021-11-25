@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/navigation_history">
+
+    <fragment
+        android:id="@+id/navigation_summary"
+        android:name="com.example.maintenancebuddy.ui.summary.MaintenanceSummaryFragment"
+        android:label="@string/title_summary"
+        tools:layout="@layout/fragment_maintenance_summary" />
+
+    <fragment
+        android:id="@+id/navigation_history"
+        android:name="com.example.maintenancebuddy.ui.history.MaintenanceHistoryFragment"
+        android:label="@string/title_maintenance_history"
+        tools:layout="@layout/fragment_maintenance_history">
+
+        <action
+            android:id="@+id/action_navigate_to_add_record"
+            app:destination="@id/navigation_add_maintenance_record"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"/>
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/navigation_calendar"
+        android:name="com.example.maintenancebuddy.ui.calendar.MaintenanceCalendarFragment"
+        android:label="@string/title_maintenance_calendar"
+        tools:layout="@layout/fragment_maintenance_calendar" />
+
+    <fragment
+        android:id="@+id/navigation_garage"
+        android:name="com.example.maintenancebuddy.ui.garage.GarageFragment"
+        android:label="@string/title_profile"
+        tools:layout="@layout/fragment_garage">
+
+        <action
+            android:id="@+id/action_navigate_to_vehicle_history"
+            app:destination="@id/navigation_history"
+            app:enterAnim="@android:anim/slide_in_left"
+            app:exitAnim="@android:anim/slide_out_right"/>
+
+        <action
+            android:id="@+id/action_navigate_to_add_vehicle"
+            app:destination="@id/navigation_add_vehicle"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"/>
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/navigation_add_vehicle"
+        android:name="com.example.maintenancebuddy.ui.addVehicle.addVehicleFragment"
+        android:label="Add Vehicle"
+        tools:layout="@layout/add_vehicle_fragment">
+    </fragment>
+
+    <fragment
+        android:id="@+id/navigation_add_maintenance_record"
+        android:name="com.example.maintenancebuddy.ui.history.AddMaintenanceRecordFragment"
+        android:label="New Maintenance Record"
+        tools:layout="@layout/fragment_add_maintenance_record">
+    </fragment>
+
+</navigation>

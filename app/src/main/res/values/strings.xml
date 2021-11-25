@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">Maintenance Buddy</string>
+    <string name="title_summary">Summary</string>
+    <string name="title_maintenance_history">Records</string>
+    <string name="title_maintenance_calendar">Calendar</string>
+    <string name="title_profile">Garage</string>
+    <string name="title_activity_main">MainActivity</string>
+    <string name="heading">Heading</string>
+    <string name="todo">TODO</string>
+    <string name="subheading">subheading</string>
+</resources>
