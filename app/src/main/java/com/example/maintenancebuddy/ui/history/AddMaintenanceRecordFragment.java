@@ -7,6 +7,7 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.Navigation;
 
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
@@ -24,6 +25,8 @@ import com.example.maintenancebuddy.data.model.MaintenanceEvent;
 import com.example.maintenancebuddy.data.repository.VehicleRepository;
 import com.example.maintenancebuddy.databinding.FragmentAddMaintenanceRecordBinding;
 import com.example.maintenancebuddy.databinding.FragmentMaintenanceHistoryBinding;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.datepicker.CalendarConstraints;
 import com.google.android.material.datepicker.DateValidatorPointBackward;
 import com.google.android.material.datepicker.MaterialDatePicker;
@@ -111,13 +114,29 @@ public class AddMaintenanceRecordFragment extends Fragment {
                     event.setTotalCost(Double.parseDouble(binding.costInput.getEditText().getText().toString()));
                     DocumentReference doc = FirebaseFirestore.getInstance().collection(DatabaseKeys.COLLECTION_RECORDS).document();
                     event.setUID(doc.getId());
-                    doc.set(event);
+                    binding.doneButton.setEnabled(false);
+                    Task<Void> addRecordTask = doc.set(event);
+                    addRecordTask.addOnCompleteListener(new OnCompleteListener<Void>() {
+                        @Override
+                        public void onComplete(@NonNull Task<Void> task) {
+                            binding.doneButton.setEnabled(true);
+                            if(task.isSuccessful()) {
+                                navigateToMaintenanceHistory(binding.getRoot());
+                            } else {
+
+                            }
+                        }
+                    });
 
                 }
             }
         });
 
         return root;
+    }
+
+    private void navigateToMaintenanceHistory(View view) {
+        Navigation.findNavController(binding.getRoot()).popBackStack(R.id.navigation_add_maintenance_record, true);
     }
 
     private void showDatePicker() {

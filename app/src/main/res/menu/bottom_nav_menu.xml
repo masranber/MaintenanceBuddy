@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <!--<item
-        android:id="@+id/navigation_summary"
-        android:icon="@drawable/ic_baseline_credit_card_24"
-        android:title="@string/title_summary" />-->
+    <item
+        android:id="@+id/navigation_garage"
+        android:icon="@drawable/ic_baseline_directions_car_24"
+        android:title="@string/title_profile" />
 
     <item
         android:id="@+id/navigation_history"
@@ -13,12 +13,7 @@
 
     <item
         android:id="@+id/navigation_calendar"
-        android:icon="@drawable/ic_baseline_assignment_24"
+        android:icon="@drawable/ic_baseline_calendar_today_24"
         android:title="@string/title_maintenance_calendar" />
-
-    <item
-        android:id="@+id/navigation_garage"
-        android:icon="@drawable/ic_baseline_assignment_24"
-        android:title="@string/title_profile" />
 
 </menu>

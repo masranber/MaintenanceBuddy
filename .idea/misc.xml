@@ -6,6 +6,7 @@
         <entry key="..\:/Users/masonberres/AndroidStudioProjects/maintanance_buddy/app/src/main/res/drawable/rectangle_rounded_1corner_white.xml" value="0.2526041666666667" />
         <entry key="..\:/Users/masonberres/AndroidStudioProjects/maintanance_buddy/app/src/main/res/drawable/rectangle_rounded_white.xml" value="0.4432291666666667" />
         <entry key="..\:/Users/masonberres/AndroidStudioProjects/maintanance_buddy/app/src/main/res/layout/activity_main.xml" value="0.33489583333333334" />
+        <entry key="..\:/Users/masonberres/AndroidStudioProjects/maintanance_buddy/app/src/main/res/layout/add_event_fragment.xml" value="0.5598958333333334" />
         <entry key="..\:/Users/masonberres/AndroidStudioProjects/maintanance_buddy/app/src/main/res/layout/add_vehicle_fragment.xml" value="0.23645833333333333" />
         <entry key="..\:/Users/masonberres/AndroidStudioProjects/maintanance_buddy/app/src/main/res/layout/card_maintenance_history_item.xml" value="0.4270833333333333" />
         <entry key="..\:/Users/masonberres/AndroidStudioProjects/maintanance_buddy/app/src/main/res/layout/card_vehicle.xml" value="0.25" />
@@ -17,6 +18,7 @@
         <entry key="..\:/Users/masonberres/AndroidStudioProjects/maintanance_buddy/app/src/main/res/layout/fragment_maintenance_calendar.xml" value="0.22291666666666668" />
         <entry key="..\:/Users/masonberres/AndroidStudioProjects/maintanance_buddy/app/src/main/res/layout/fragment_maintenance_history.xml" value="0.3340857787810384" />
         <entry key="..\:/Users/masonberres/AndroidStudioProjects/maintanance_buddy/app/src/main/res/layout/fragment_maintenance_summary.xml" value="0.4270833333333333" />
+        <entry key="..\:/Users/masonberres/AndroidStudioProjects/maintanance_buddy/app/src/main/res/layout/fragment_new_vehicle.xml" value="0.3723958333333333" />
         <entry key="..\:/Users/masonberres/AndroidStudioProjects/maintanance_buddy/app/src/main/res/layout/fragment_signup.xml" value="0.209375" />
         <entry key="..\:/Users/masonberres/AndroidStudioProjects/maintanance_buddy/app/src/main/res/layout/fragment_vehicle.xml" value="0.4270833333333333" />
         <entry key="..\:/Users/masonberres/AndroidStudioProjects/maintanance_buddy/app/src/main/res/layout/vehicle_card.xml" value="0.23645833333333333" />

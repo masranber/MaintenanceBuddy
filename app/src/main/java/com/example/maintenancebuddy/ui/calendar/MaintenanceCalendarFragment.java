@@ -34,6 +34,9 @@ import java.util.ArrayList;
 
 import javax.inject.Inject;
 
+import dagger.hilt.android.AndroidEntryPoint;
+
+@AndroidEntryPoint
 public class MaintenanceCalendarFragment extends Fragment implements OnCompleteListener<DocumentReference> {
 
     private MaintenanceCalendarViewModel CalendarViewModel;

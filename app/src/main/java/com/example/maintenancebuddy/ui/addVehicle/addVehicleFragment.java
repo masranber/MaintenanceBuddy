@@ -37,6 +37,7 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.OnProgressListener;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
+import com.squareup.picasso.Picasso;
 
 import javax.inject.Inject;
 
@@ -68,18 +69,16 @@ public class addVehicleFragment extends Fragment {
         View root = binding.getRoot();
 
         db = FirebaseFirestore.getInstance();
-        Button selectImage = binding.selectImageButton;
         Button addVehicle = binding.addVehicleButton;
-        Button addEvent = binding.addEventButton; // STUB to be done in iteration 2
-        EditText make = binding.editTextMake;
-        EditText model = binding.editTextModel;
-        EditText color = binding.editTextColor;
-        EditText miles = binding.editTextMiles;
-        EditText year = binding.editTextYear;
-        EditText vin = binding.editTextplateNumber;
-        ImageView preview = binding.imageView;
+        EditText make = binding.makeInput.getEditText();
+        EditText model = binding.modelInput.getEditText();
+        EditText color = binding.colorInput.getEditText();
+        EditText miles = binding.milesInput.getEditText();
+        EditText year = binding.yearInput.getEditText();
+        EditText vin = binding.vinInput.getEditText();
+        ImageView preview = binding.preview;
         TextView errorText = binding.ErrorText;
-        selectImage.setOnClickListener(new View.OnClickListener() {
+        preview.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startFileChooser();
@@ -154,7 +153,10 @@ public class addVehicleFragment extends Fragment {
                         // There are no request codes
                         Intent data = result.getData();
                         filePath = data.getData();
-
+                        Picasso.with(getContext())
+                                .load(filePath)
+                                .fit()
+                                .into(binding.preview);
                     }
                 }
             });

@@ -74,6 +74,8 @@ public class LoginFragment extends Fragment {
         emailInput = binding.loginEmailAddressInput;
         passwordInput = binding.loginPasswordInput;
 
+        //loginViewModel.logout();
+
         signupButton.setOnClickListener(this::navigateToSignupFragment);
 
         loginButton.setOnClickListener(new View.OnClickListener() {
@@ -87,6 +89,26 @@ public class LoginFragment extends Fragment {
             @Override
             public void onValidate(boolean isValid, List<Integer> errorCodes) {
                 loginButton.setEnabled(isValid);
+            }
+        });
+
+        loginViewModel.observeError(getViewLifecycleOwner(), s -> {
+            if(s == null) {
+                emailInput.setErrorEnabled(false);
+                passwordInput.setErrorEnabled(false);
+                binding.loginErrorText.setText(null);
+            } else if(s.equals("password")) {
+                emailInput.setErrorEnabled(false);
+                passwordInput.setError("Required *");
+                binding.loginErrorText.setText(null);
+            } else if(s.equals("email")) {
+                emailInput.setError("Required *");
+                passwordInput.setErrorEnabled(false);
+                binding.loginErrorText.setText(null);
+            } else {
+                emailInput.setErrorEnabled(false);
+                passwordInput.setErrorEnabled(false);
+                binding.loginErrorText.setText(s);
             }
         });
 
@@ -104,25 +126,6 @@ public class LoginFragment extends Fragment {
                     break;
             }
         });
-    }
-
-    private boolean validateTextInputs() {
-        if(emailInput == null || passwordInput == null) return false;
-        boolean isEmailValid = loginViewModel.validateRequiredField(emailInput.getEditText().getText().toString());
-        boolean isPasswordValid = loginViewModel.validateRequiredField(passwordInput.getEditText().getText().toString());
-
-        if(!isEmailValid) {
-            emailInput.setError("Required");
-        } else {
-            emailInput.setErrorEnabled(false);
-        }
-        if(!isPasswordValid) {
-            passwordInput.setError("Required");
-        } else {
-            passwordInput.setErrorEnabled(false);
-        }
-
-        return isEmailValid && isPasswordValid;
     }
 
     private void navigateToSignupFragment(View view) {

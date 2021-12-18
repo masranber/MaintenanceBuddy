@@ -15,13 +15,13 @@
         android:layout_marginHorizontal="12dp"
         android:layout_marginTop="30dp"
         android:fontFamily="sans-serif-black"
-        android:text="Name's Garage"
+        android:text=""
         android:textAlignment="viewStart"
         android:textSize="24sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"/>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/vehicles_recycler_view"

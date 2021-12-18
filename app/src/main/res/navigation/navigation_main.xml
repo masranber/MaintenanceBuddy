@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
-    app:startDestination="@+id/navigation_history">
+    app:startDestination="@+id/navigation_garage">
 
     <fragment
         android:id="@+id/navigation_summary"
@@ -63,6 +63,12 @@
         android:name="com.example.maintenancebuddy.ui.history.AddMaintenanceRecordFragment"
         android:label="New Maintenance Record"
         tools:layout="@layout/fragment_add_maintenance_record">
+
+        <action
+            android:id="@+id/action_navigate_to_maintenance_history"
+            app:destination="@id/navigation_history"
+            app:enterAnim="@android:anim/slide_in_left"
+            app:exitAnim="@android:anim/slide_out_right"/>
     </fragment>
 
 </navigation>

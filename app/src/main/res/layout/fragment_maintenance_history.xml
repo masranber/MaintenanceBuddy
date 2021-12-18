@@ -121,6 +121,19 @@
         app:layout_constraintStart_toEndOf="@+id/textView2"
         app:layout_constraintTop_toTopOf="@id/linearLayout" />
 
+    <TextView
+        android:id="@+id/empty_history_text"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/linearLayout"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintWidth_percent="0.5"
+        android:text="Please select a vehicle from your garage to view maintenance history."
+        android:textSize="24sp"
+        android:textAlignment="center"/>
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/maintenance_history_recycler_view"
         android:layout_width="match_parent"

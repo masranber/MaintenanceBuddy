@@ -50,7 +50,7 @@ public class UserRepository {
 
     public UserProfile getCurrentUser() {
         UserProfile currentUserProfile = currentUser.getValue();
-        if(currentUserProfile == null) return null;
+        if(currentUserProfile == null || authState.getValue() == AuthState.NOT_AUTHENTICATED) return null;
         return new UserProfile(currentUserProfile); // copy user profile to avoid someone messing with it
     }
 
@@ -76,8 +76,10 @@ public class UserRepository {
      * @return
      */
     public Completable login(String email, String password) {
-        if(getAuthState() == AuthState.AUTHENTICATED) {
-            return Completable.error(new IllegalStateException("Already authenticated, must logout before login"));
+        if(email == null || email.length() == 0) {
+            return Completable.error(new IllegalArgumentException("email"));
+        } else if(password == null || password.length() == 0) {
+            return Completable.error(new IllegalArgumentException("password"));
         }
         Single<FirebaseUser> userAuthCompletable = Single.create(emitter -> {
             Task<AuthResult> authTask = firebaseAuth.signInWithEmailAndPassword(email, password);
@@ -123,5 +125,10 @@ public class UserRepository {
                 .doOnError(throwable -> {
                     // delete authenticated user if creating their user profile in the database fails
                 });
+    }
+
+    public void logout() {
+        authState.onNext(AuthState.NOT_AUTHENTICATED);
+        firebaseAuth.signOut();
     }
 }

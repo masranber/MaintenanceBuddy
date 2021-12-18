@@ -64,6 +64,8 @@ public class MaintenanceHistoryFragment extends Fragment {
         //MaintenanceHistoryRecyclerViewAdapter adapter = (MaintenanceHistoryRecyclerViewAdapter) maintenanceEventsRecyclerView.getAdapter();
         Vehicle currentVehicle = mViewModel.getCurrentVehicle();
         if(currentVehicle != null) {
+            binding.newRecordButton.setVisibility(View.VISIBLE);
+            binding.emptyHistoryText.setVisibility(View.GONE);
             FirestoreRecyclerOptions<MaintenanceEvent> options = new FirestoreRecyclerOptions.Builder<MaintenanceEvent>()
                     .setQuery(FirebaseFirestore.getInstance()
                             .collection(DatabaseKeys.COLLECTION_RECORDS)
@@ -73,6 +75,9 @@ public class MaintenanceHistoryFragment extends Fragment {
                     .build();
             MaintenanceHistoryRecyclerViewAdapter adapter = new MaintenanceHistoryRecyclerViewAdapter(options);
             maintenanceEventsRecyclerView.setAdapter(adapter);
+        } else {
+            binding.newRecordButton.setVisibility(View.GONE);
+            binding.emptyHistoryText.setVisibility(View.VISIBLE);
         }
 
         /*mViewModel.observeRecyclerViewOptions(getViewLifecycleOwner(), query -> {

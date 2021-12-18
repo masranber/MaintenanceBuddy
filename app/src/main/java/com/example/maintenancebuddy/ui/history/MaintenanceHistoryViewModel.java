@@ -47,7 +47,7 @@ public class MaintenanceHistoryViewModel extends ViewModel implements SnapshotPa
 
     public String getTitleText() {
         Vehicle currentVehicle = vehicleRepository.getCurrentVehicle();
-        return currentVehicle == null ? "Please Select a Vehicle" : String.format(Locale.US, "%d %s %s", currentVehicle.getYear(), currentVehicle.getMake(), currentVehicle.getModel());
+        return currentVehicle == null ? "No Vehicle Selected" : String.format(Locale.US, "%d %s %s", currentVehicle.getYear(), currentVehicle.getMake(), currentVehicle.getModel());
     }
 
     public boolean canAddRecord() {

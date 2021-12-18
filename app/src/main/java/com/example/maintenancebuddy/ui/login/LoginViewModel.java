@@ -14,6 +14,9 @@ import com.example.maintenancebuddy.data.UserRepository;
 import com.example.maintenancebuddy.data.ValidationListener;
 import com.example.maintenancebuddy.data.model.UserAccount;
 import com.google.android.gms.auth.api.Auth;
+import com.google.firebase.FirebaseNetworkException;
+import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException;
+import com.google.firebase.auth.FirebaseAuthInvalidUserException;
 
 import javax.inject.Inject;
 
@@ -22,7 +25,9 @@ import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers;
 import io.reactivex.rxjava3.annotations.NonNull;
 import io.reactivex.rxjava3.core.CompletableObserver;
 import io.reactivex.rxjava3.disposables.Disposable;
+import io.reactivex.rxjava3.functions.Action;
 import io.reactivex.rxjava3.functions.Consumer;
+import io.reactivex.rxjava3.functions.Predicate;
 import io.reactivex.rxjava3.schedulers.Schedulers;
 
 @HiltViewModel
@@ -34,7 +39,7 @@ public class LoginViewModel extends ViewModel {
     private final UserRepository                            userRepository;
     private final MutableLiveData<UserRepository.AuthState> loginState;
     private final MutableLiveData<String>                   emailError;
-    private final MutableLiveData<String> passwordError;
+    private final MutableLiveData<String> error;
 
     private final FormValidator formValidator;
 
@@ -45,7 +50,7 @@ public class LoginViewModel extends ViewModel {
         this.userRepository = userRepository;
         this.loginState = new MutableLiveData<>(UserRepository.AuthState.NOT_AUTHENTICATED);
         this.emailError = new MutableLiveData<>();
-        this.passwordError = new MutableLiveData<>();
+        this.error = new MutableLiveData<>();
         this.formValidator = new FormValidator();
         attachAuthStateObserver();
     }
@@ -54,7 +59,27 @@ public class LoginViewModel extends ViewModel {
         userRepository.login(email, password)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe();
+                .subscribe(() -> {
+                    error.postValue(null); // no errors
+                }, throwable -> {
+                    if(throwable.getCause() != null) {
+                        throwable = throwable.getCause();
+                        if(throwable instanceof FirebaseAuthInvalidCredentialsException ||
+                                throwable instanceof FirebaseAuthInvalidUserException) {
+                            error.postValue("Invalid email or password.");
+                        } else if(throwable instanceof FirebaseNetworkException) {
+                            error.postValue("There was a problem connecting. Please check your internet connection and try again.");
+                        } else {
+                            error.postValue("An unknown error occurred. Please try again later.");
+                        }
+                    } else {
+                        error.postValue(throwable.getMessage());
+                    }
+                });
+    }
+
+    public void logout() {
+        userRepository.logout();
     }
 
     public void observeLoginState(LifecycleOwner lifecycleOwner, Observer<? super UserRepository.AuthState> observer) {
@@ -76,19 +101,7 @@ public class LoginViewModel extends ViewModel {
         authSubscription.dispose();
     }
 
-    public void validateField(int fieldId, String text) {
-
-    }
-
-    public boolean validateRequiredField(String fieldText) {
-        return fieldText != null && !fieldText.isEmpty();
-    }
-
-    public boolean validateEmailField(String emailText) {
-        return emailText != null && Patterns.EMAIL_ADDRESS.matcher(emailText).matches();
-    }
-
-    public boolean validatePasswordField(String passwordText) {
-        return passwordText != null && !passwordText.isEmpty();
+    public void observeError(LifecycleOwner lifecycleOwner, Observer<String> observer) {
+        error.observe(lifecycleOwner, observer);
     }
 }

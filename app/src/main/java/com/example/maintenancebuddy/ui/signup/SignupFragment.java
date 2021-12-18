@@ -69,30 +69,32 @@ public class SignupFragment extends Fragment {
 
         signupButton = binding.signupButton;
         signupButton.setOnClickListener(view -> {
-            if(validateTextInputs()) {
-                signupButton.startAnimation();
-                mViewModel.createUser(
-                        firstNameInput.getEditText().getText().toString(),
-                        lastNameInput.getEditText().getText().toString(),
-                        emailInput.getEditText().getText().toString(),
-                        passwordInput.getEditText().getText().toString()
-                );
-            }
+            signupButton.startAnimation();
+            mViewModel.createUser(
+                    firstNameInput.getEditText().getText().toString(),
+                    lastNameInput.getEditText().getText().toString(),
+                    emailInput.getEditText().getText().toString(),
+                    passwordInput.getEditText().getText().toString()
+            );
         });
 
         mViewModel.observeSignupState(getViewLifecycleOwner(), signupState -> {
             if (signupState == SignupViewModel.SignupState.BUSY) {
                 signupButton.startAnimation();
-                setErrorMessage(null);
             } else {
                 signupButton.revertAnimation();
             }
         });
 
         mViewModel.observeSignupResult(getViewLifecycleOwner(), signupResult -> {
+            firstNameInput.setErrorEnabled(false);
+            lastNameInput.setErrorEnabled(false);
+            emailInput.setErrorEnabled(false);
+            passwordInput.setErrorEnabled(false);
+            setErrorMessage(null);
+            signupButton.revertAnimation();
             switch(signupResult) {
                 case SUCCESS:
-                    setErrorMessage(null);
                     signupButton.doneLoadingAnimation(getResources().getColor(R.color.colorPrimary), GraphicUtils.rasterizeVectorDrawable(getContext(), R.drawable.ic_baseline_check_circle_outline_24, R.color.white));
                     Runnable runnable = new Runnable() {
                         @Override
@@ -102,12 +104,35 @@ public class SignupFragment extends Fragment {
                     };
                     new Handler().postDelayed(runnable, 500);
                     break;
+                case FIRST_NAME_REQ:
+                    firstNameInput.setError("Required *");
+                    break;
+                case LAST_NAME_REQ:
+                    lastNameInput.setError("Required *");
+                    break;
+                case EMAIL_REQ:
+                    emailInput.setError("Required *");
+                    break;
+                case PASS_REQ:
+                    passwordInput.setError("Required *");
+                    break;
+                case PASS_TOO_SHORT:
+                    passwordInput.setError("Must be at least 8 characters");
+                    break;
+                case EMAIL_INVALID:
+                    emailInput.setError("Invalid email address");
+                    break;
                 case EMAIL_ALREADY_EXISTS:
                     setErrorMessage("An account with this email address already exists.");
+                    break;
+                case NO_INTERNET:
+                    setErrorMessage("There was a problem connecting. Please check your internet connection and try again.");
+                    break;
                 case UNKNOWN_ERROR:
                 default:
                     setErrorMessage("An unknown error occurred. Please try again later.");
                     break;
+
             }
         });
 
